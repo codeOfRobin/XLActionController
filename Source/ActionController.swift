@@ -259,12 +259,8 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
 			let lastSectionIndex = _sections.count - 1
 			let layoutAtts = collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: section.actions.count - 1, section: hasHeader() ? lastSectionIndex + 1 : lastSectionIndex))
 			
-			print(hasHeader())
-			print(layoutAtts?.frame)
-			
 			//FIXME: Changes here
 			contentHeight = layoutAtts!.frame.origin.y + layoutAtts!.frame.size.height + 2 * (headerSpec?.height(headerData!))!
-			print(contentHeight)
 		}
 		
 		setUpContentInsetForHeight(view.frame.height)
@@ -613,7 +609,6 @@ open class ActionController<ActionViewType: UICollectionViewCell, ActionDataType
 	
 	fileprivate func setUpContentInsetForHeight(_ height: CGFloat) {
 		let currentInset = collectionView.contentInset
-		print(currentInset)
 		let bottomInset = settings.cancelView.showCancel ? settings.cancelView.height : currentInset.bottom
 		var topInset = height - contentHeight
 		
